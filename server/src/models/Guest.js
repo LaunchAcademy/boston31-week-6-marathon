@@ -15,6 +15,33 @@ class Guest extends Model {
       }
     }
   }
+
+  static get relationMappings() {
+    const { Invitation, Event } = require("./index")
+
+    return {
+      events: {
+        relation: Model.ManyToManyRelation,
+        modelClass: Event,
+        join: {
+          from: "guests.id",
+          through: {
+            from: "invitations.guestId",
+            to: "invitations.eventId"
+          },
+          to: "events.id"
+        }
+      },
+      invitations: {
+        relation: Model.HasManyRelation,
+        modelClass: Invitation,
+        join: {
+          from: "guests.id",
+          to: "invitations.guestId"
+        }
+      }
+    }
+  }
 }
 
 module.exports = Guest

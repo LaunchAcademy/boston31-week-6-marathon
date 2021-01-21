@@ -5,6 +5,20 @@ class Category extends Model {
     return "categories"
   }
 
+  static relationMappings(){
+    const Event = require('./Event')
+    return{
+      events: {
+        relation: Model.HasManyRelation,
+        modelClass: Event,
+        join: {
+          from: 'categories.id',
+          to: 'events.categoryId'
+        }
+      }
+    }
+  }
+
   static get jsonSchema() {
     return {
       type: "object",
