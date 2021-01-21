@@ -1,0 +1,22 @@
+{
+  "type": "module",
+  "private": true,
+  "workspaces": [
+    "server",
+    "client",
+    "e2e"
+  ],
+  "scripts": {
+    "build:client": "yarn workspace event-planning-with-objection-client build",
+    "dev": "yarn workspace event-planning-with-objection-server dev",
+    "dev:debug": "yarn workspace event-planning-with-objection-server dev:debug",
+    "heroku-postbuild": "yarn workspace event-planning-with-objection-client build",
+    "start": "yarn workspace event-planning-with-objection-server start",
+    "dev:cypress": "yarn workspace event-planning-with-objection-server dev:e2e",
+    "e2e:open": "yarn workspace event-planning-with-objection-e2e e2e:open",
+    "e2e:run": "yarn workspace event-planning-with-objection-e2e e2e:run"
+  },
+  "engines": {
+    "node": "^14.15"
+  }
+}
